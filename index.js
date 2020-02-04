@@ -5,9 +5,10 @@ const { AionKeystoreClient, AionLocalSigner } = require('@makkii/app-aion')
 const config = require('./config.json')
 const aion = new AionKeystoreClient()
 
-console.log('private_key ' + config.private_key)
+console.log('[private_key]')
+console.log(config.private_key)
 
-function post(data,fn){
+function post(data, callback){
     
     let content = JSON.stringify(data)
     
@@ -20,6 +21,7 @@ function post(data,fn){
             'Content-Length': content.length
         }
     };
+
     let req = http.request(options, (res) => {
         let _data = '';
         res.on('data', (chunk)=>{
@@ -29,6 +31,7 @@ function post(data,fn){
             callback(_data)
         })
     })
+    
     req.write(content);
     req.end();
 }
@@ -38,14 +41,18 @@ exec('xxd -plain dapp.jar', (err, stdout, stderr) => {
         console.error(err)
     } else {
         let data = stdout.replace(/[\r\n]+/gm,"")
+        console.log('[data.length]')
+        console.log(data.length)
         let unsigned_tx = {
             nonce: 0,
             type: 2,
-            data: data
+            data: '0001b9ae' + data
         }
         aion.signTransaction(unsigned_tx, new AionLocalSigner(), {
             private_key: config.private_key
         }).then((signed_tx) => {
+            console.log('[signed_tx.length]')
+            console.log(signed_tx.length)
             post(signed_tx,(res)=>{
                 console.log(res)
             })
