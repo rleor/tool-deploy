@@ -1,0 +1,24 @@
+{
+  "name": "tool-deploy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makkii-dev/tool-deploy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/makkii-dev/tool-deploy/issues"
+  },
+  "dependencies": {
+    "@makkii/app-aion": "^0.1.1",
+    "@makkii/makkii-core": "^0.1.1",
+    "regenerator-runtime": "^0.13.3"
+  },
+  "homepage": "https://github.com/makkii-dev/tool-deploy#readme",
+  "description": ""
+}
