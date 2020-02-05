@@ -17,6 +17,7 @@
   "dependencies": {
     "@makkii/app-aion": "^0.1.1",
     "@makkii/makkii-core": "^0.1.1",
+    "aion-web3-avm-abi": "^1.2.6-beta.6",
     "regenerator-runtime": "^0.13.3"
   },
   "homepage": "https://github.com/makkii-dev/tool-deploy#readme",
