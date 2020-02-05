@@ -13,8 +13,8 @@ function post(data, callback){
     let content = JSON.stringify(data)
     
     let options={
-        host: '127.0.0.1',
-        port: 8545,
+        host: config.rpc_ip,
+        port: config.rpc_port,
         method:'POST',
         headers: {
             'Content-Type': 'application/json',

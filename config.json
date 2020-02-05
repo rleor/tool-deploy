@@ -1,5 +1,5 @@
 {
     "private_key": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-    "unsigned_tx": "",
-    "rpc": "https://127.0.0.1:8545"
+    "rpc_ip": "127.0.0.1",
+    "rpc_port": 8545
 }
