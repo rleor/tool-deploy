@@ -9,9 +9,9 @@ console.log('[private_key]')
 console.log(config.private_key)
 
 function post(data, callback){
-    
+
     let content = JSON.stringify(data)
-    
+
     let options={
         host: '127.0.0.1',
         port: 8545,
@@ -31,7 +31,7 @@ function post(data, callback){
             callback(_data)
         })
     })
-    
+
     req.write(content);
     req.end();
 }
@@ -48,7 +48,9 @@ exec('xxd -plain dapp.jar', (err, stdout, stderr) => {
         let unsigned_tx = {
             nonce: 0,
             type: 2,
-            data: '0001b9ae' + data
+            data: '0001b9ae' + data,
+            gasPrice: 20*10**9,
+            gasLimit: 5000000,
         }
         aion.signTransaction(unsigned_tx, new AionLocalSigner(), {
             private_key: config.private_key
@@ -57,10 +59,10 @@ exec('xxd -plain dapp.jar', (err, stdout, stderr) => {
             console.log(signed_tx.length)
             console.log('[signed_tx]')
             console.log(signed_tx.substring(0, 10) + ' ...')
-            // post(signed_tx,(res)=>{
-            //     console.log(res)
-            // })
-        })       
+            post(signed_tx,(res)=>{
+                console.log(res)
+            })
+        })
     }
 })
 
