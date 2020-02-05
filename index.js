@@ -43,6 +43,8 @@ exec('xxd -plain dapp.jar', (err, stdout, stderr) => {
         let data = stdout.replace(/[\r\n]+/gm,"")
         console.log('[data.length]')
         console.log(data.length)
+        console.log('[data]')
+        console.log(data.substring(0, 8) + ' ...')
         let unsigned_tx = {
             nonce: 0,
             type: 2,
@@ -53,9 +55,11 @@ exec('xxd -plain dapp.jar', (err, stdout, stderr) => {
         }).then((signed_tx) => {
             console.log('[signed_tx.length]')
             console.log(signed_tx.length)
-            post(signed_tx,(res)=>{
-                console.log(res)
-            })
+            console.log('[signed_tx]')
+            console.log(signed_tx.substring(0, 10) + ' ...')
+            // post(signed_tx,(res)=>{
+            //     console.log(res)
+            // })
         })       
     }
 })
