@@ -37,35 +37,6 @@ function post(data, callback){
     req.end();
 }
 
-// exec('xxd -plain dapp.jar', (err, stdout, stderr) => {
-//     if (err) {
-//         console.error(err)
-//     } else {
-//         let data = stdout.replace(/[\r\n]+/gm,"")
-//         console.log('[data.length]')
-//         console.log(data.length)
-//         console.log('[data]')
-//         console.log(data.substring(0, 8) + ' ...')
-//         let unsigned_tx = {
-//             nonce: 0,
-//             type: 2,
-//             data: '0x0001b9ae' + data,
-//             gasPrice: 10000000000,
-//             gasLimit: 5000000,
-//         }
-//         aion.signTransaction(unsigned_tx, new AionLocalSigner(), {
-//             private_key: config.private_key
-//         }).then((signed_tx) => {
-//             console.log('[signed_tx.length]')
-//             console.log(signed_tx.length)
-//             console.log('[signed_tx]')
-//             console.log(signed_tx.substring(0, 10) + ' ...')
-//             post(signed_tx,(res)=>{
-//                 console.log(res)
-//             })
-//         })
-//     }
-// })
 function getNonce(addr){
     return new Promise(resolve=>{
         post({
@@ -79,6 +50,7 @@ function getNonce(addr){
         )
     })
 }
+
 async function execute(){
     const jar = fs.readFileSync('./dapp.jar')
     const data = abi.readyDeploy(jar, abi.encode([], []));
@@ -101,7 +73,7 @@ async function execute(){
         console.log('[signed_tx.length]')
         console.log(signed_tx.length)
         console.log('[signed_tx]')
-        console.log(signed_tx.substring(0, 10) + ' ...')
+        console.log(signed_tx)
         post({
             jsonrpc: "2.0",
             method: "eth_sendRawTransaction",
