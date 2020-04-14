@@ -1,5 +1,6 @@
 {
-    "private_key": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "_private_key": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "private_key": "fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff2",
     "rpc_ip": "47.92.202.146",
     "rpc_port": 8545
 }
